@@ -53,7 +53,7 @@ resource "aws_route_table" "main_rt" {
 
 # Associate routing table
 
-resource "aws_route" "priv_route" {
+resource "aws_route" "pub_route" {
 	route_table_id=aws_route_table.main_rt.id
 	destination_cidr_block="0.0.0.0/0"
 	gateway_id=aws_internet_gateway.main_ig.id
@@ -78,7 +78,7 @@ module "key_pair" {
 
 # Security group
 
-# Security group for worpress
+# Security group for wordpress
 
 resource "aws_security_group" "wp_sg" {
 	name="wp_sg"
@@ -127,7 +127,6 @@ resource "aws_security_group" "mysql_sg" {
 	}
 
 	ingress {
-		description="TLS on port 3306"
 		from_port=3306
 		to_port=3306
 		protocol="tcp"
