@@ -1,0 +1,6 @@
+task2_keypair*
+*.tfstate
+*.backup
+.terraform
+.terraform/*
+*pem
